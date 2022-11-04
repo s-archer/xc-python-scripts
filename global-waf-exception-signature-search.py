@@ -5,17 +5,18 @@
 # 
 # This script provides a global search thropugh all namespaces to identify:
 #  - Load-Balancers using a non-standard WAF policy and...
+#  - Load-Balancers without a WAF policy and...
 #  - Load-Balancers configured with a WAF exception matching a specific signature ID
 #
 #  Note that you can search the F5 signature database here, to identify signatures for 
 #  specific CVE or vulnerability: https://docs.cloud.f5.com/docs/reference/attack-signatures 
 
-# Set variables and collect input from user, including token, and the search criteria.  
 # This link explains how to obtain an API token: (https://docs.cloud.f5.com/docs/how-to/user-mgmt/credentials#generate-api-tokens.  
 
 import requests
 import json
 
+# Set variables and collect input from user, including token, and the search criteria.  
 tenant                  = "my_tenant"
 token                   = input("\nEnter F5 XC Token: ")
 search_signature        = int(input("\nFind WAF exceptions for this Signature ID (Enter to use demo value): ") or "200003214")
