@@ -16,10 +16,10 @@
 import requests
 import json
 
-# Set variables and collect input from user, including token, and the search criteria.  
-tenant                  = "my_tenant"
+# Set variables and collect input from user, including tenant, token, and the search criteria.  
+tenant                  = input("\nEnter F5 XC Tenant: ") or "my-tenant"
 token                   = input("\nEnter F5 XC Token: ")
-search_signature        = int(input("\nFind WAF exceptions for this Signature ID (Enter to use demo value): ") or "200003214")
+search_signature        = input("\nFind WAF exceptions for this Signature ID (Enter to use demo value): ") or "200003214"
 search_waf_policy_name  = input("\nEnter correct corp standard WAF policy name (Enter to use demo value): ") or "my-standard"
 
 # Define the F5 XC API call
@@ -69,7 +69,7 @@ for i in namespaces:
 
             # If we found some signatures in WAF Exception Rules, print them
             if signatures != []:
-                print("    WAF exclude: " + ','.join(signatures))
+                print("    WAF exclude: " + ', '.join(signatures))
             else:
                 print("    WAF exclude: None")
         # Print warning if no WAF policy is applied to a Load-Balancer
