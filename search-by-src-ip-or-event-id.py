@@ -81,4 +81,5 @@ if search_type.lower() == "ip":
     events("src_ip", search_ip)
 else:
     events("req_id", search_id)
+    
 print("\nFinished\n")
