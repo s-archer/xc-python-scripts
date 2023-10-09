@@ -1,0 +1,83 @@
+{% macro render_rr(value) %}
+        {
+          "ttl": "{{ value.ttl }}",
+          "a_record": {
+            "name": "{{ value.fqdn }}",
+            "values": [
+              "{{ value.rdata }}"
+            ]
+          }
+        }{% endmacro %}
+
+{
+  "metadata": {
+    "name": "archf5.com",
+    "namespace": "system",
+    "labels": {},
+    "annotations": {},
+    "description": "the archf5.com domain",
+    "disable": false
+  },
+  "spec": {
+    "primary": {
+      "default_soa_parameters": {},
+      "rr_set_group": [],
+      "default_rr_set_group": [
+        {
+          "ttl": 60,
+          "a_record": {
+            "name": "test",
+            "values": [
+              "1.2.3.4"
+            ]
+          }
+        },
+        {
+          "ttl": 60,
+          "a_record": {
+            "name": "arch-test",
+            "values": [
+              "10.2.3.4"
+            ]
+          }
+        },
+        {
+          "ttl": 86400,
+          "ns_record": {
+            "values": [
+              "ns1.f5clouddns.com",
+              "ns2.f5clouddns.com"
+            ]
+          }
+        },
+        {
+          "ttl": 3600,
+          "ns_record": {
+            "name": "volt",
+            "values": [
+              "ns1.volterradns.io",
+              "ns2.volterradns.io",
+              "ns3.volterradns.io",
+              "ns4.volterradns.io"
+            ]
+          }
+        },
+        {
+          "ttl": 60,
+          "lb_record": {
+            "name": "priority",
+            "value": {
+              "tenant": "my-tenant-bceuutam",
+              "namespace": "system",
+              "name": "arch-priority-lb",
+              "kind": "dns_load_balancer"
+            }
+          }
+        },{% for key, value in rr_list.items() recursive %}{{ render_rr(value) }}{% if not loop.last %},{% endif %}{% endfor %}
+      ],
+      "dnssec_mode": {
+        "disable": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+zone,ttl,fqdn,record_type,rdata,record_id
+example.com,3600,percival.example.com,A,@{address=194.42.236.13},38322256
+example.com,3600,remote.example.com,A,@{address=213.86.237.10},729638160
+example.com,3600,seanet.example.com,A,@{address=213.86.237.36},727891314
+example.com,3600,sha1desktop.example.com,A,@{address=116.246.18.149},733224381
+example.com,60,sin14gair.example.com,A,@{address=180.255.248.3},260706812
+example.com,600,smtp1.example.com,A,@{address=213.133.153.111},546865940
+example.com,600,smtp2.example.com,A,@{address=213.86.237.112},514087553
+example.com,3600,smtp3.example.com,A,@{address=62.92.61.112},562854008
+example.com,3600,offshoregateway-dev.example.com,CNAME,@{cname=ofgwa0001.azurewebsites.net.},356572086
+example.com,3600,offshoregateway-integration.example.com,CNAME,@{cname=ofgwa0007.azurewebsites.net.},357275624
+example.com,3600,offshoregateway-rad.example.com,CNAME,@{cname=ofgwa0008.azurewebsites.net.},436713082
+example.com,3600,offshoregateway-staging.example.com,CNAME,@{cname=ofgwa0004.azurewebsites.net.},357275626
+example.com,3600,offshoregateway-test.example.com,CNAME,@{cname=ofgwa0002.azurewebsites.net.},357275623
+example.com,3600,offshoregateway-uat.example.com,CNAME,@{cname=ofgwa0003.azurewebsites.net.},357275625
+example.com,3600,popd.example.com,CNAME,@{cname=vpop0.netcom.net.uk.},38322321
