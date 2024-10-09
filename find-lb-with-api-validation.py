@@ -4,8 +4,8 @@
 # For F5 Distributed Cloud Platform
 # 
 # This script provides a global search thropugh all namespaces to identify:
-#  - Load-Balancers using api definition and...
-#  - api definitions not currently used.
+#  - Load-Balancers using api specification and...
+#  - api validation ENABLED.
 
 # This link explains how to obtain an API token: (https://docs.cloud.f5.com/docs/how-to/user-mgmt/credentials#generate-api-tokens.  
 
@@ -29,13 +29,7 @@ for i in namespaces:
     namespace = i["name"]
     lresponse = request(tenant, token, "/config/namespaces/" + namespace + "/http_loadbalancers").text
     loadbalancers = json.loads(lresponse)['items']
-    aresponse = request(tenant, token, "/config/namespaces/" + namespace + "/api_definitions").text
-    api_definitions = json.loads(aresponse)['items']
-    print("\nNamespace: " + namespace)
-
-    # Print all API Definitions
-    for a in api_definitions:
-        print("\n  API Def: " + namespace + " " + a["name"])
+    # print("\nNamespace: " + namespace)
 
     # Iterate through all Load-Balancers to get each Load-Balancer config (spec)
     for l in loadbalancers:
@@ -44,12 +38,11 @@ for i in namespaces:
         lbspec = json.loads(lb)['spec']
         # print("    Domain:      " + json.dumps(lbspec['domains']))
 
-        # Check if each Load-Balancer has a API Definition enabled
+        # Check if each Load-Balancer has a API Specification
         if "api_specification" in lb:
-            print("\n  LB: " + l["name"])
-            print("    Domain:      " + json.dumps(lbspec['domains']))
-            apidef_name = json.dumps(lbspec['api_specification']['api_definition']['name'])
-            apidef_namespace = json.dumps(lbspec['api_specification']['api_definition']['namespace'])
-            print("    API Definition: " + apidef_namespace + apidef_name)
-        # else:
-        #     print("   ! No API Definition")
+            api_spec = json.dumps(lbspec['api_specification'])
+            # Check if API Specification has Validation enabled.
+            if "validation_all_spec_endpoints" in api_spec:
+                print("\nNamespace: " + namespace)
+                print("\n  LB: " + l["name"])
+                print("\n    API Validation: ENABLED")

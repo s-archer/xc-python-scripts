@@ -15,8 +15,8 @@ from datetime import datetime
 
 # Set variables and collect input from user, including tenant, token, and the search criteria 
 # Change values after 'or' to real values, for faster testing (just hit enter instead of manual inputs).  
-tenant                  = input("\nEnter F5 XC Tenant: ") or "my-tenant"
-token                   = input("\nEnter F5 XC Token: ") or "my-token"
+tenant                  = input("\nEnter F5 XC Tenant: ") or "<my-tenant>"
+token                   = input("\nEnter F5 XC Token: ") or "<my-token>"
 user_email              = input("\nEnter F5 XC User Email (or use 'all' to review/delete all expired tokens): ") or "my@email.com"
 
 # Define the F5 XC API call
