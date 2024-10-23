@@ -1,0 +1,10 @@
+POST /api/sentence/locations HTTP/1.1
+Host: test-lb.example.com
+Connection: Keep-Alive
+Content-Length: <will be calculated>
+User-Agent: F5-XC-Healthcheck
+Content-Type: application/json
+Accept: */*
+Accept-Encoding: gzip, deflate
+
+Body: {"value":"cave"}
