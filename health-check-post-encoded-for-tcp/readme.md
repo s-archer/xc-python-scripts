@@ -1,3 +1,5 @@
+# Create Complex HTTP Monitors in XC using a TCP Monitor (by Hex Encoding HTTP Request)
+
 This script reads the input file `health-check-ascii.txt` which must contain a valid ascii formatted HTTP request.  It encodes the request as hex so it can be used in an F5 XC TCP Health Check.
 
 Set variable for the health check input file.  
