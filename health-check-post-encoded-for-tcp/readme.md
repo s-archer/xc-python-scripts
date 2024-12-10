@@ -6,7 +6,7 @@ Set variable for the health check input file.
 
 It should have content similar to this:
 
-`
+<code>
 POST /api/locations HTTP/1.1
 Host: host.example.com
 Connection: Keep-Alive
@@ -17,7 +17,7 @@ Accept: */*
 Accept-Encoding: gzip, deflate
 
 Body: {"value":"cave"}
-`
+</code>
 
 NOTE that the body line has prefixed a variable named "Body: ".  This is 
 not valid HTTP, but is required for this script.  Set 'Body:' to null (blank) if creating a GET request.
