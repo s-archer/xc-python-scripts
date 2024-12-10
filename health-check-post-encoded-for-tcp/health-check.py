@@ -1,9 +1,9 @@
 # This script reads the input file which must contain a valid ascii formatted
 #  HTTP request.  It encodes the request as hex so it can be used in an F5 XC
 #  TCP Health Check.
-#
+
 # Set variable for the health check input file.  It should have content similar to this:
-# 
+
 # POST /api/sentence/locations HTTP/1.1
 # Host: sentence.local
 # Connection: Keep-Alive
@@ -71,14 +71,14 @@ if not http_request.endswith("\r\n\r\n"):
 
 # Add the body to the request
 http_request += request_body
-print('\r\nHTTP Request: \r\n\r\n'+ http_request)
+print('\r\nASCII HTTP Request: \r\n\r\n'+ http_request)
 
 # Convert the HTTP request to hex
 http_request_hex = http_request.encode("utf-8").hex()
 http_request_bytes = bytes.fromhex(http_request_hex)
 
 # Print the hex string
-print('\r\nHTTP Request (hex): \r\n\r\n'+ http_request_hex)
+print('\r\nHex HTTP Request (use this value for the XC TCP Health-Check): \r\n\r\n'+ http_request_hex)
 
 # Send the HTTP request using sockets
 host = lb_domain_for_testing
