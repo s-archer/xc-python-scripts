@@ -19,15 +19,16 @@ Accept-Encoding: gzip, deflate
 Body: {"value":"cave"}
 </code>
 &nbsp; 
+
 NOTE that the body line has prefixed a variable named "Body: ".  This is 
 not valid HTTP, but is required for this script.  Set 'Body:' to null (blank) if creating a GET request, like this:
 &nbsp; 
-&nbsp; 
+
 <code>
 Body:
 </code>
 &nbsp; 
-&nbsp; 
+
 Also, if you want the script to send the request to the server to test tye response, modify the the variable:
 
 `lb_domain_for_testing = "test-lb.example.com"`
