@@ -6,8 +6,7 @@ Set variable for the health check input file.
 
 It should have content similar to this:
 
-<code>
-POST /api/locations HTTP/1.1
+<code>POST /api/locations HTTP/1.1
 Host: host.example.com
 Connection: Keep-Alive
 Content-Length: <will be calculated>
@@ -16,17 +15,14 @@ Content-Type: application/json
 Accept: */*
 Accept-Encoding: gzip, deflate
 &nbsp; 
-Body: {"value":"cave"}
-</code>
+Body: {"value":"cave"}</code>
 &nbsp; 
 
 NOTE that the body line has prefixed a variable named "Body: ".  This is 
 not valid HTTP, but is required for this script.  Set 'Body:' to null (blank) if creating a GET request, like this:
 &nbsp; 
 
-<code>
-Body:
-</code>
+<code>Body:</code>
 &nbsp; 
 
 Also, if you want the script to send the request to the server to test tye response, modify the the variable:
