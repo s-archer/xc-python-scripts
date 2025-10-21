@@ -30,7 +30,6 @@ def get_securiy_logs(token,tenant,namespace,loadbalancer,hours):
         headers = {'Authorization': "APIToken {}".format(token)}
         try:
             auth_response = requests.post(BASE_URL, data=json.dumps({"aggs": {}, "end_time": "{}".format(endTime), "limit": 0, "namespace": "{}".format(namespace), "query": "{{vh_name=\"ves-io-http-loadbalancer-""{}""\"}}".format(loadbalancer), "sort": "DESCENDING", "start_time": "{}".format(midTime), "scroll":True } ), headers=headers)
-            # auth_response = requests.post(BASE_URL, data=json.dumps({"namespace": "demo-app-waap","query": "{vh_name=\"ves-io-demo-app-waap-sentence-api\",sec_event_type=~\"waf_sec_event|l7_policy_sec_event|js_challenge_sec_event|captcha_sec_event\"}","aggs": {},"start_time": "2025-09-27T12:10:00.000Z","end_time": "2025-09-27T13:10:00.000Z"}), headers=headers)
             auth_response.raise_for_status()
         except requests.exceptions.Timeout:
             print("Error: Request timed out")
